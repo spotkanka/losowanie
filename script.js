@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let allNames = [];
     let remainingNames = [];
-    let black = ["Wojtek", "Wojciech", "Jerved", "Jerwed", "Kosarz", "Wojteczek", "Wojtunio", "kulka", "mocy", "gruby"];
+    let black = ["Wojtek", "Wojciech", "Klimek" , "Jerved", "Jerwed", "Kosarz", "Wojteczek", "Wojtunio", "kulka", "mocy", "gruby"];
     let blackCounter = 0;
 
     checkbox.checked = false;
