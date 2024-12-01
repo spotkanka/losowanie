@@ -2,19 +2,29 @@
 @font-face {
     font-family: 'Inter';
     src: url('Inter-VariableFont_opsz-wght.ttf') format('truetype');
-    font-weight: 100 900; 
+    font-weight: 100 900;
     font-style: normal;
 }
 
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+@supports (font-variation-settings: normal) {
+    :root { font-family: InterVariable, sans-serif;
+    }
+}
+
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #FFF8DE;
-    color: #AA5486;
-    font-size: 22px;
+	font-family: 'Inter', sans-serif;
+	background-color: #FFF8DE;
+	color: #AA5486;
+	font-size: 22px;
 }
 
 h1{
-    margin-top: 8px;
+	margin-top: 8px;
     margin-bottom: 8px;
     margin-left: 8px;
     margin-right: 8px;
@@ -27,7 +37,7 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-     margin: 20px; 
+    margin: 20px; 
 }
 
 
@@ -39,7 +49,7 @@ h1{
     perspective: 1000px;
     margin-bottom: 20px;
     position: relative;
-    left: -10px;
+	left: -10px;
     border: none;
 }
 
@@ -75,6 +85,10 @@ h1{
 .card.flipped .back {
     transform: rotateY(0deg);
 } 
+
+.card.flipped + #video-container {
+    display: none;
+}
 
 #allow-repeats-container {
     position: absolute;
@@ -149,7 +163,7 @@ button {
 }
 
 #draw-name{
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 input {
@@ -164,8 +178,8 @@ input {
 }
 
 ::placeholder {
-    color: hsl(325.12deg 33.86% 49.8% / 66%);
-    opacity: 1;
+color: hsl(325.12deg 33.86% 49.8% / 66%);
+opacity: 1;
 }
 
 input:focus {
@@ -194,6 +208,50 @@ input:focus {
 .list-item:hover {
     background-color: #f8d7da;
     color: #721c24;
+}
+
+#video-container {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 20px;
+    pointer-events: none;
+}
+
+video {
+    display: block;
+    width: 90vw;
+    aspect-ratio: auto;
+    border-radius: 5px; 
+
+#gif-container {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; 
+    margin: 10px;
+    border-radius: 10px;
+    padding: 20px;
+    pointer-events: none;
+}
+
+img {
+    display: block;
+    width: 90vw;
+    aspect-ratio: auto;
+    border-radius: 5px;
+    padding: 2px;
+    background-color: #000;
+    pointer-events: none;
+}
+
+#gif-container.active img {
+    pointer-events: auto;
 }
 
 footer {
