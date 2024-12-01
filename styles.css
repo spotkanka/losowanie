@@ -2,13 +2,13 @@
 @font-face {
     font-family: 'Inter';
     src: url('Inter-VariableFont_opsz-wght.ttf') format('truetype');
-    font-weight: 100 900;
+    font-weight: 100 900; /* Zakres wag dla fontów zmiennych */
     font-style: normal;
 }
 
 :root {
     font-family: Inter, sans-serif;
-    font-feature-settings: 'liga' 1, 'calt' 1;
+    font-feature-settings: 'liga' 1, 'calt' 1; /* fix for Chrome */
 }
 
 @supports (font-variation-settings: normal) {
@@ -17,6 +17,11 @@
 }
 
 body {
+	/* display: flex;
+   	justify-content: center;
+   	align-items: center;
+  	min-height: 100vh;
+  	margin: 0; */
 	font-family: 'Inter', sans-serif;
 	background-color: #FFF8DE;
 	color: #AA5486;
@@ -37,15 +42,16 @@ h1{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px; 
+    /* min-height: 100vh;*/
+     margin: 20px; 
 }
 
 
 .card {
-    width: 90%;
-    max-width: 320px;
-    height: auto;
-    aspect-ratio: 2 / 3;
+    width: 90%; /* Karta zajmuje 90% szerokości ekranu */
+    max-width: 320px; /* Maksymalna szerokość karty */
+    height: auto; /* Wysokość dopasowuje się do proporcji */
+    aspect-ratio: 2 / 3; /* Proporcje 2:3 dla wysokości i szerokości */
     perspective: 1000px;
     margin-bottom: 20px;
     position: relative;
@@ -66,7 +72,7 @@ h1{
     align-items: center;
     flex-direction: column;
     transition: transform 0.6s;
-    padding: 10px;
+    padding: 10px; /* Dodano odstępy wewnętrzne */
 }
 
 
@@ -90,20 +96,22 @@ h1{
     display: none;
 }
 
+/* Stylowanie kontenera z powtarzaniem */
 #allow-repeats-container {
     position: absolute;
     top: 10px;
     right: 10px;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: center; /* Wyrównanie tekstu i checkboxa w jednej linii */
+    gap: 10px; /* Odstęp między tekstem a checkboxem */
     font-size: 16px;
     color: #AA5486;
     cursor: pointer;
-    user-select: none;
+    user-select: none; /* Zapobiega zaznaczaniu tekstu */
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Ukrywanie domyślnego checkboxa */
 #allow-repeats-container input[type="checkbox"] {
     position: absolute;
     opacity: 0;
@@ -111,6 +119,7 @@ h1{
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Minimalistyczny okrągły checkbox */
 #allow-repeats-container .minimal-checkmark {
     width: 20px;
     height: 20px;
@@ -123,12 +132,20 @@ h1{
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Zmiana koloru na hover 
+#allow-repeats-container:hover .minimal-checkmark {
+    background-color: #ddd;
+    -webkit-tap-highlight-color: transparent;
+} */
+
+/* Zmiana koloru po zaznaczeniu */
 #allow-repeats-container input[type="checkbox"]:checked ~ .minimal-checkmark {
     background-color: #AA5486;
-    transform: scale(1.1);
+    transform: scale(1.1); /* Lekka animacja powiększenia */
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Kropka wewnątrz zaznaczonego checkboxa */
 #allow-repeats-container .minimal-checkmark:after {
     content: "";
     position: absolute;
@@ -143,6 +160,7 @@ h1{
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Pokazanie kropki po zaznaczeniu */
 #allow-repeats-container input[type="checkbox"]:checked ~ .minimal-checkmark:after {
     display: block;
     -webkit-tap-highlight-color: transparent;
@@ -179,7 +197,7 @@ input {
 
 ::placeholder {
 color: hsl(325.12deg 33.86% 49.8% / 66%);
-opacity: 1;
+opacity: 1; /* Firefox */
 }
 
 input:focus {
@@ -187,17 +205,18 @@ input:focus {
     outline: none; 
 }
 
+/* Dostosowanie listy imion */
 .card .back ul {
     list-style: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 10px 0; /* Odstęp między listą a innymi elementami */
 }
 
 .card .back li {
-    margin-bottom: 8px;
-    word-wrap: break-word;
+    margin-bottom: 8px; /* Odstęp między imionami */
+    word-wrap: break-word; /* Zapobiega wychodzeniu długich imion poza kartę */
     text-align: left;
-    width: 100%;
+    width: 100%; /* Dopasowanie do szerokości rodzica */
 }
 
 .list-item {
@@ -206,16 +225,17 @@ input:focus {
 }
 
 .list-item:hover {
-    background-color: #f8d7da;
-    color: #721c24;
+    background-color: #f8d7da; /* Jasnoczerwony */
+    color: #721c24; /* Ciemniejszy tekst */
 }
 
 #video-container {
-    position: fixed;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
+    position: fixed; /* Pozycja na stałe względem okna przeglądarki */
+    top: 15%;        /* Środek pionowy */
+    left: 50%;       /* Środek poziomy */
+    transform: translate(-50%, -50%); /* Wycentrowanie */
+    z-index: 9999;   /* Najwyższa warstwa */
+    /*background: rgba(0, 0, 0, 0.8); /* Ciemne tło */
     margin: 10px;
     border-radius: 10px;
     padding: 20px;
@@ -224,16 +244,19 @@ input:focus {
 
 video {
     display: block;
-    width: 90vw;
-    aspect-ratio: auto;
-    border-radius: 5px; 
+    width: 90vw; /* 90% szerokości widoku */
+    /*max-width: 90%; /* Ograniczenie maksymalnej szerokości */
+    aspect-ratio: auto; /* Proporcja 16:9 */
+    border-radius: 5px; /* Opcjonalnie: zaokrąglone rogi */
+}
 
 #gif-container {
-    position: fixed;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 9999; 
+    position: fixed; /* Pozycja na stałe względem okna przeglądarki */
+    top: 15%;        /* Środek pionowy */
+    left: 50%;       /* Środek poziomy */
+    transform: translate(-50%, -50%); /* Wycentrowanie */
+    z-index: 9999;   /* Najwyższa warstwa */
+    /*background: rgba(0, 0, 0, 0.8); /* Ciemne tło */
     margin: 10px;
     border-radius: 10px;
     padding: 20px;
@@ -242,16 +265,17 @@ video {
 
 img {
     display: block;
-    width: 90vw;
-    aspect-ratio: auto;
-    border-radius: 5px;
+    width: 90vw; /* 90% szerokości widoku */
+    /*max-width: 90%; /* Ograniczenie maksymalnej szerokości */
+    aspect-ratio: auto; /* Proporcja 16:9 */
+    border-radius: 5px; /* Opcjonalnie: zaokrąglone rogi */
     padding: 2px;
     background-color: #000;
-    pointer-events: none;
+    pointer-events: none; /* Domyślnie blokujemy interakcję z GIF-em */
 }
 
 #gif-container.active img {
-    pointer-events: auto;
+    pointer-events: auto; /* Pozwalamy na kliknięcie tylko wtedy, gdy GIF jest widoczny */
 }
 
 footer {
