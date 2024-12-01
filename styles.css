@@ -1,0 +1,204 @@
+@charset "utf-8";
+@font-face {
+    font-family: 'Inter';
+    src: url('Inter-VariableFont_opsz-wght.ttf') format('truetype');
+    font-weight: 100 900; 
+    font-style: normal;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FFF8DE;
+    color: #AA5486;
+    font-size: 22px;
+}
+
+h1{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+     margin: 20px; 
+}
+
+
+.card {
+    width: 90%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    perspective: 1000px;
+    margin-bottom: 20px;
+    position: relative;
+    left: -10px;
+    border: none;
+}
+
+.card .front, .card .back {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.6s;
+    padding: 10px;
+}
+
+
+ .card .front {
+    transform: rotateY(0deg);
+}
+
+.card .back {
+    transform: rotateY(180deg);
+} 
+
+.card.flipped .front {
+    transform: rotateY(-180deg);
+}
+
+.card.flipped .back {
+    transform: rotateY(0deg);
+} 
+
+#allow-repeats-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #AA5486;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#allow-repeats-container input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#allow-repeats-container .minimal-checkmark {
+    width: 20px;
+    height: 20px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    border: 2px solid #AA5486;
+    display: inline-block;
+    position: relative;
+    transition: background-color 0.3s, transform 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#allow-repeats-container input[type="checkbox"]:checked ~ .minimal-checkmark {
+    background-color: #AA5486;
+    transform: scale(1.1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+#allow-repeats-container .minimal-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-tap-highlight-color: transparent;
+}
+
+#allow-repeats-container input[type="checkbox"]:checked ~ .minimal-checkmark:after {
+    display: block;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #AA5486;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+    font-family: 'Inter', sans-serif;
+    -webkit-tap-highlight-color: rgb(120 58 96 / 33%);
+}
+
+#draw-name{
+    margin-top: 20px;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid hsl(325.12deg 33.86% 49.8% / 66%);
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+    color: #AA5486;
+}
+
+::placeholder {
+    color: hsl(325.12deg 33.86% 49.8% / 66%);
+    opacity: 1;
+}
+
+input:focus {
+    border: 2px solid #AA5486;
+    outline: none; 
+}
+
+.card .back ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.card .back li {
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    text-align: left;
+    width: 100%;
+}
+
+.list-item {
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.list-item:hover {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+footer {
+    position: absolute;
+    right: 8px;
+    font-size: 12px;
+    color: #AA5486;
+}
