@@ -31,20 +31,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const normalize = (text) => {
             const replacements = {
                 '0': 'o',
-                '1': ['i', 'l', 'j'], // '1' może być 'i', 'l', 'j'
+                '1': ['i', 'l', 'j'],
                 '2': 't',
                 '3': 'e',
                 '4': 'a',
                 '5': 's',
                 '7': 't',
                 '@': ['a', 'o'],
-                'l': ['i', 'j'],
+                // 'l': ['i', 'j'],
                 '!': ['i', 'l', 'j'],
                 '$': 's',
                 '^': 'a',
                 '?': 'p',
-                'i': 'j',
-                'j': 'i'
+                // 'i': 'j',
+                // 'j': 'i'
             };
     
             return text
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .map(char => {
                     if (replacements[char]) {
                         if (Array.isArray(replacements[char])) {
-                            return replacements[char];
+                            return replacements[char][0]; //poprawić to [0] jako zabezpieczenie przed dyslekcją
                         }
                         return replacements[char];
                     }
