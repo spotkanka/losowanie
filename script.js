@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
          ) {
                 blackCounter++;
                 reakcja();
-                return true; // Znaleziono słowo z listy
+                return true; 
             }
     
             const similarityPercentage = getSimilarityPercentage(normalizedInput, normalizedWord);
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (similarityPercentage >= 50 && similarityPercentage <= 55) {
                 blackCounter++;
                 reakcja();
-                return true; // Znaleziono częściowe dopasowanie
+                return true; 
             }
     
             if (isSimilarWord(normalizedInput, normalizedWord)) {
