@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const On = "~made by Oliwier Parobczy";
     const Off = "~ made by Oliwier Parobczy";
 
+    const addToBlacklist = (newWords) => {
+        black = [...black, ...newWords];
+    };
+    
     const checkInputAndIncrement = (input, blacklist) => {
         const normalize = (text) => {
             const replacements = {
@@ -88,10 +92,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const normalizedWord = normalize(word).replace(/[^a-z0-9]/g, '');
             const reversedWord = normalizedWord.split('').reverse().join('');
     
-            if (
+        if (
                 containsWordWithSkippedChars(normalizedInput, normalizedWord) ||
-                containsWordWithSkippedChars(normalizedInput, reversedWord)
-            ) {
+                containsWordWithSkippedChars(normalizedInput, reversedWord) ||
+                normalizedInput.includes(normalizedWord) ||
+                normalizedInput.includes(reversedWord) ||
+                isSimilarWord(normalizedInput, normalizedWord)
+         ) {
                 blackCounter++;
                 reakcja();
                 return true; // Znaleziono słowo z listy
@@ -221,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.classList.remove('flipped'); // Obrót na przód
         if(reakcjaOn){
-            if(black.includes(selectedName)){
+            if(checkInputAndIncrement(selectedName, black)){
                 alert("Ojoj! Wylosowałeś zbanowane imię! \nSkontaktuj się z Oliwierem w celu pomocy")
                 return;
             }
