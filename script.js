@@ -229,6 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.remove('flipped'); // Obrót na przód
         if(reakcjaOn){
             if(checkInputAndIncrement(selectedName, black)){
+                //blackCounter--;
                 alert("Ojoj! Wylosowałeś zbanowane imię! \nSkontaktuj się z Oliwierem w celu pomocy")
                 return;
             }
